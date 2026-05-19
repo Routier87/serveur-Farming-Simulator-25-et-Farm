@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convoys ETS2</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
 
+<header>
+<div class="logo">
+<h1>Convoys Farm Motors</h1>
+</div>
+</header>
+
+<h1 class="title">Convoys organisés</h1>
+
+<section class="mods-page" id="convoy-container"></section>
+
+<script>
+const convoys = JSON.parse(localStorage.getItem("convoys")) || [];
+const container = document.getElementById("convoy-container");
+
+convoys.reverse().forEach(convoy=>{
+
+container.innerHTML += `
+<div class="convoy-box">
+<img src="${convoy.image}">
+<h2>${convoy.title}</h2>
+<p>📅 ${convoy.date}</p>
+<p>🕒 ${convoy.time}</p>
+<p>🏢 Départ : ${convoy.depart}</p>
+<p>🏁 Arrivée : ${convoy.arrivee}</p>
+<p>🛣️ Distance : ${convoy.distance}</p>
+</div>
+</html>
