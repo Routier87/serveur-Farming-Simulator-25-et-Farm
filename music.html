@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musiques</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
 
+<script>
+const isUser = localStorage.getItem("isUser");
+const isAdmin = localStorage.getItem("isAdmin");
+
+if(isUser !== "true" && isAdmin !== "true"){
+alert("Connecte-toi pour voir les musiques.");
+window.location.href = "login.html";
+}
+</script>
+
+<h1 class="title">Musiques du serveur</h1>
+
+<section class="mods-page" id="music-container"></section>
+
+<script>
+const musics = JSON.parse(localStorage.getItem("musics")) || [];
+const container = document.getElementById("music-container");
+
+musics.reverse().forEach(music=>{
+
+container.innerHTML += `
+<div class="mod-box">
+<h2>${music.title}</h2>
+<audio controls style="width:100%;margin-top:20px;">
+<source src="${music.link}">
+</audio>
+</html>
